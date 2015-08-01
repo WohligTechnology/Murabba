@@ -1,0 +1,19 @@
+<section class="sidemenus" ng-controller="sidemenuCtrl">
+
+    <ul class="menu">
+        <li ng-repeat="menu in navigation" ng-if="menu.subnav.length>0" ng-class="{'active':menu.show}">
+            <md-button class="md-raised md-primary" ng-click="changeMenuShow(menu)" ng-class="{'active':menu.show}"> {{menu.name}}
+                <i class="fa fa-angle-down"></i>
+            </md-button>
+            <ul class="submenu" ng-show="menu.show" ng-class="{'show':menu.show}">
+                <li ng-repeat="submenu in menu.subnav">
+                    <md-button href="{{submenu.link}}" class="md-raised md-primary"> {{menu.name}} </md-button>
+                </li>
+            </ul>
+        </li>
+
+        <li ng-if="menu.subnav.length==0" ng-repeat="menu in navigation">
+            <md-button class="md-raised md-primary" href="{{menu.link}}"> {{menu.name}} </md-button>
+        </li>
+    </ul>
+</section>

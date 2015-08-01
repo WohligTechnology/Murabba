@@ -1,0 +1,26 @@
+<header>
+    <div ng-include="template.header" class="template header"></div>
+</header>
+<div class="container-fluid">
+    <section class="row main-content">
+        <div class="sidemenu col-md-3">
+            <div ng-include="template.sidemenu" class="template sidemenu"></div>
+        </div>
+
+        <div class="content col-md-9">
+            <div ng-include="template.content" ng-if="!template.contentmenu" class="template content"></div>
+            <div class="row" ng-if="template.contentmenu">
+                <div class="col-md-9">
+                    <div ng-include="template.content" class="template content"></div>
+                </div>
+                <div class="col-md-3">
+                    <div ng-include="template.contentmenu" class="template content"></div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>
+<footer>
+    <div ng-include="template.footer" class="template footer"></div>
+</footer>

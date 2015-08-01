@@ -1,0 +1,86 @@
+<section class="userform">
+    <div class="panel panel-default" style="border-radius:0px;">
+        <div class="panel-heading panel-hdr">
+            <i class="fa fa-th"></i> Update User
+        </div>
+        <div class="panel-body">
+            <md-content layout-padding class="autoScroll">
+                <form name="projectForm">
+                    <md-input-container>
+                        <label>User</label>
+                        <input ng-model="user.users" type="name">
+                    </md-input-container>
+                    <div layout layout-sm="column">
+                        <md-input-container flex>
+                            <label>First name</label>
+                            <input required name="firstName" ng-model="project.firstName">
+                            <div ng-messages="projectForm.firstName.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container flex>
+                            <label>Last Name</label>
+                            <input required name="lastName" ng-model="project.lastName">
+                            <div ng-messages="projectForm.lastName.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div layout layout-sm="column">
+                        <md-input-container flex>
+                            <label>Country</label>
+                            <input ng-model="user.country" required name="country" ng-model="project.country">
+                        </md-input-container>
+                        <md-input-container flex>
+                            <label>States</label>
+                            <input ng-model="user.state" required name="state" ng-model="project.state">
+                        </md-input-container>
+                        <md-select ng-model="size" placeholder="City" flex>
+                            <md-optgroup label="City">
+                                <md-option ng-value="state.name" ng-repeat="state in states | filter: {category: 'Maharastra' }">{{state.name}}</md-option>
+                            </md-optgroup>
+                        </md-select>
+                    </div>
+                    <div layout layout-sm="column">
+                        <md-input-container flex>
+                            <label>Facebook Id</label>
+                            <input ng-model="user.facebookid" required name="facebookid" ng-model="project.facebookid">
+                        </md-input-container>
+                        <md-input-container flex>
+                            <label>Twitter Id</label>
+                            <input ng-model="user.twitid" required name="twitid" ng-model="project.twitid">
+                        </md-input-container>
+                    </div>
+                    <p>Selected Value: <span class="radioValue">{{ data.group1 }}</span> </p>
+                    <md-radio-group layout ng-model="data.group1">
+                        <div flex>
+                            <md-radio-button value="Male">Male</md-radio-button>
+                        </div>
+                        <div flex>
+                            <md-radio-button value="Female"> Female </md-radio-button>
+                        </div>
+                    </md-radio-group>
+
+                    <md-input-container>
+                        <label>Hourly Rate (USD)</label>
+                        <input required type="number" step="any" name="rate" ng-model="project.rate" min="800" max="4999">
+                        <div ng-messages="projectForm.rate.$error">
+                            <div ng-message="required">You've got to charge something! You can't just <b>give away</b> a Missile Defense System.</div>
+                            <div ng-message="min">You should charge at least $800 an hour. This job is a big deal... if you mess up, everyone dies!</div>
+                            <div ng-message="max">$5,000 an hour? That's a little ridiculous. I doubt event Bill Clinton could afford that.</div>
+                        </div>
+                    </md-input-container>
+
+                </form>
+                <section layout="row" layout-sm="column" layout-align="center left">
+                    <a>
+                        <md-button class="md-raised md-primary">Submit</md-button>
+                    </a>
+                </section>
+            </md-content>
+        </div>
+
+    </div>
+
+
+</section>
