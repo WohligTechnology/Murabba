@@ -1,27 +1,5 @@
 <div class="user">
     <div class="panel panel-default" style="border-radius:0px;">
-        <div class="panel-heading panel-hdr bg-primary">
-            <i class="fa fa-th"></i>Show User
-            <ul class="block-options">
-                <li>
-                    <a href="#">
-                        <i class="fa fa-arrow-left"></i>
-                        <md-tooltip>
-                            import
-                        </md-tooltip>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-arrow-right"></i>
-                        <md-tooltip>
-                            export
-                        </md-tooltip>
-                    </a>
-                </li>
-            </ul>
-        </div>
-
         <div class="panel-body">
             <div class="user-table">
                 <table class="table table-hover">
@@ -29,16 +7,13 @@
                         <tr>
                             <th class="text-center">First Name</th>
                             <th class="text-center">Email</th>
-                            <th class="text-center">Access</th>
                             <th class="text-center">Edit User</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="value in values">
+                        <tr ng-repeat="value in about">
                             <td class="text-center">{{value.firstName}} {{value.lastName}}</td>
                             <td class="text-center">{{value.email}}</td>
-                            <td class="text-center acess-level"><span class="label label-primary">Personal</span>
-                            </td>
                             <td class="text-center btn-edit">
                                 <div class="btn-group">
                                     <button class="btn btn-xs btn-default" type="button"><i class="fa fa-pencil"></i>
@@ -52,7 +27,6 @@
                                         </md-tooltip>
                                     </button>
                                 </div>
-                            </td>
                             </td>
                         </tr>
                     </tbody>
