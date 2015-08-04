@@ -1,86 +1,69 @@
-<section class="userform">
+<div class="user">
     <div class="panel panel-default" style="border-radius:0px;">
         <div class="panel-heading panel-hdr">
-            <i class="fa fa-th"></i> Update User
+            <i class="fa fa-th"></i> Show Client
         </div>
+        <div class="col-md-4">
+            <md-input-container flex>
+                <label>Search</label>
+                <input name="search" ng-model="pagedata.search" ng-change="reload(pagedata);">
+            </md-input-container>
+        </div>
+        <div class="col-md-4 incenter">
+            <a href="#/createclient">
+                <md-button class="md-raised md-primary">Create Client</md-button>
+            </a>
+        </div>
+        <div class="col-md-1 on-right">
+            <md-select ng-model="pagedata.limit" placeholder="Page Limit" flex ng-change="reload(pagedata);">
+                <md-optgroup label="Page Limit">
+                    <md-option ng-value="10">10</md-option>
+                    <md-option ng-value="15">15</md-option>
+                    <md-option ng-value="20">20</md-option>
+                </md-optgroup>
+            </md-select>
+        </div>
+
         <div class="panel-body">
-            <md-content layout-padding class="autoScroll">
-                <form name="projectForm">
-                    <md-input-container>
-                        <label>User</label>
-                        <input ng-model="user.users" type="name">
-                    </md-input-container>
-                    <div layout layout-sm="column">
-                        <md-input-container flex>
-                            <label>First name</label>
-                            <input required name="firstName" ng-model="project.firstName">
-                            <div ng-messages="projectForm.firstName.$error">
-                                <div ng-message="required">This is required.</div>
-                            </div>
-                        </md-input-container>
-                        <md-input-container flex>
-                            <label>Last Name</label>
-                            <input required name="lastName" ng-model="project.lastName">
-                            <div ng-messages="projectForm.lastName.$error">
-                                <div ng-message="required">This is required.</div>
-                            </div>
-                        </md-input-container>
-                    </div>
-                    <div layout layout-sm="column">
-                        <md-input-container flex>
-                            <label>Country</label>
-                            <input ng-model="user.country" required name="country" ng-model="project.country">
-                        </md-input-container>
-                        <md-input-container flex>
-                            <label>States</label>
-                            <input ng-model="user.state" required name="state" ng-model="project.state">
-                        </md-input-container>
-                        <md-select ng-model="size" placeholder="City" flex>
-                            <md-optgroup label="City">
-                                <md-option ng-value="state.name" ng-repeat="state in states | filter: {category: 'Maharastra' }">{{state.name}}</md-option>
-                            </md-optgroup>
-                        </md-select>
-                    </div>
-                    <div layout layout-sm="column">
-                        <md-input-container flex>
-                            <label>Facebook Id</label>
-                            <input ng-model="user.facebookid" required name="facebookid" ng-model="project.facebookid">
-                        </md-input-container>
-                        <md-input-container flex>
-                            <label>Twitter Id</label>
-                            <input ng-model="user.twitid" required name="twitid" ng-model="project.twitid">
-                        </md-input-container>
-                    </div>
-                    <p>Selected Value: <span class="radioValue">{{ data.group1 }}</span> </p>
-                    <md-radio-group layout ng-model="data.group1">
-                        <div flex>
-                            <md-radio-button value="Male">Male</md-radio-button>
-                        </div>
-                        <div flex>
-                            <md-radio-button value="Female"> Female </md-radio-button>
-                        </div>
-                    </md-radio-group>
-
-                    <md-input-container>
-                        <label>Hourly Rate (USD)</label>
-                        <input required type="number" step="any" name="rate" ng-model="project.rate" min="800" max="4999">
-                        <div ng-messages="projectForm.rate.$error">
-                            <div ng-message="required">You've got to charge something! You can't just <b>give away</b> a Missile Defense System.</div>
-                            <div ng-message="min">You should charge at least $800 an hour. This job is a big deal... if you mess up, everyone dies!</div>
-                            <div ng-message="max">$5,000 an hour? That's a little ridiculous. I doubt event Bill Clinton could afford that.</div>
-                        </div>
-                    </md-input-container>
-
-                </form>
-                <section layout="row" layout-sm="column" layout-align="center left">
-                    <a>
-                        <md-button class="md-raised md-primary">Submit</md-button>
-                    </a>
-                </section>
-            </md-content>
+            <div class="user-table">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Name</th>
+                            <th class="text-center">Image</th>
+                            <th colspan="2" class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="value in client">
+                            <td class="text-center">{{value.name}} </td>
+                            <td class="text-center">{{value.image}}</td>
+                            <td class="text-center btn-edit">
+                                <div class="btn-group">
+                                    <button class="btn btn-xs btn-default" type="button" ng-click="deletefun(value._id)"><i class="fa fa-times"></i>
+                                        <md-tooltip>
+                                            Delete
+                                        </md-tooltip>
+                                    </button>
+                                    <a href="#/editclient/{{value._id}}">
+                                        <button class="btn btn-xs btn-default" type="button"><i class="fa fa-pencil"></i>
+                                            <md-tooltip>
+                                                Edit
+                                            </md-tooltip>
+                                        </button>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <nav>
+                    <ul class="pagination">
+                        <li ng-class="page.class" ng-repeat="page in pages"><a ng-click="reload({page:page.pageno,limit:pagedata.limit,search:pagedata.search});">{{page.pageno}}</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-
     </div>
-
-
-</section>
+</div>

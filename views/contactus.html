@@ -1,96 +1,71 @@
-<section class="gridview">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card">
-                <div class="cardimage">
-                    <figure>
-                        <img src="image/sample3.jpg" class="img-responsive">
-                        <div class="card-title">Card1</div>
-                    </figure>
-                </div>
-                <div class="card-content">
-                    <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-                </div>
-                <div class="card-action clearfix">
-                    <div class="pull-right">
-                        <md-button>Action 1</md-button>
-                        <md-button>Action 2</md-button>
-                        <md-button>Action 3</md-button>
-                    </div>
-                </div>
-            </div>
+<div class="user">
+    <div class="panel panel-default" style="border-radius:0px;">
+        <div class="panel-heading panel-hdr">
+            <i class="fa fa-th"></i> Show Contact Us
         </div>
         <div class="col-md-4">
-            <div class="card">
-                <div class="cardimage">
-                    <figure md-ink-ripple>
-                        <img src="image/sample2.jpg" class="img-responsive">
-                        <div class="card-title">Card2</div>
-                    </figure>
-                </div>
-                <div class="card-content">
-                    <div class="card-profile pull-right">
-                        <div class="lock-size" layout="row" layout-align="center center">
-                            <md-fab-speed-dial md-direction="down" class="md-fling">
-                                <md-fab-trigger>
-                                    <md-button aria-label="menu" class="md-fab md-warn">
-                                        <i class="fa fa-plus"></i>
-                                        <!--                        <i class="fa fa-th"></i>-->
-                                    </md-button>
-                                </md-fab-trigger>
-                                <md-fab-actions>
-                                    <md-button aria-label="facebook" class="md-fab md-raised md-mini">
-                                        <i class="fa fa-facebook-official"></i>
-                                    </md-button>
-                                    <md-button aria-label="twitter" class="md-fab md-raised md-mini">
-                                        <i class="fa fa-twitter-square"></i>
-                                    </md-button>
-                                    <md-button aria-label="Google hangout" class="md-fab md-raised md-mini">
-                                        <i class="fa fa-google-plus-square"></i>
-                                    </md-button>
-                                </md-fab-actions>
-                            </md-fab-speed-dial>
-                        </div>
-                    </div>
-                    <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-                </div>
-                <div class="card-action">
-                    <md-button>Action 1</md-button>
-                </div>
-            </div>
+            <md-input-container flex>
+                <label>Search</label>
+                <input name="search" ng-model="pagedata.search" ng-change="reload(pagedata);">
+            </md-input-container>
         </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="cardimage">
-                    <figure md-ink-ripple>
-                        <img src="image/sample1.jpg" class="img-responsive">
-                        <figcaption>Card3</figcaption>
-                    </figure>
-                </div>
+        <div class="col-md-4 incenter">
+            <a href="#/createcontactus">
+                <md-button class="md-raised md-primary">Create Contact Us</md-button>
+            </a>
+        </div>
+        <div class="col-md-1 on-right">
+            <md-select ng-model="pagedata.limit" placeholder="Page Limit" flex ng-change="reload(pagedata);">
+                <md-optgroup label="Page Limit">
+                    <md-option ng-value="10">10</md-option>
+                    <md-option ng-value="15">15</md-option>
+                    <md-option ng-value="20">20</md-option>
+                </md-optgroup>
+            </md-select>
+        </div>
 
-                <div class="card-content">
-                    <p>I am convenient because I require little</p>
-                </div>
-                <div class="card-action">
-                    <md-button>Action 1</md-button>
-                    <md-button>Action 2</md-button>
-                </div>
+        <div class="panel-body">
+            <div class="user-table">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Name</th>
+                            <th class="text-center">Phone</th>
+                            <th class="text-center">Email</th>
+                            <th colspan="2" class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="value in contactus">
+                            <td class="text-center">{{value.name}} </td>
+                            <td class="text-center">{{value.phone}}</td>
+                            <td class="text-center">{{value.email}}</td>
+                            <td class="text-center btn-edit">
+                                <div class="btn-group">
+                                    <button class="btn btn-xs btn-default" type="button" ng-click="deletefun(value._id)"><i class="fa fa-times"></i>
+                                        <md-tooltip>
+                                            Delete
+                                        </md-tooltip>
+                                    </button>
+                                    <a href="#/editcontactus/{{value._id}}">
+                                        <button class="btn btn-xs btn-default" type="button"><i class="fa fa-pencil"></i>
+                                            <md-tooltip>
+                                                Edit
+                                            </md-tooltip>
+                                        </button>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <nav>
+                    <ul class="pagination">
+                        <li ng-class="page.class" ng-repeat="page in pages"><a ng-click="reload({page:page.pageno,limit:pagedata.limit,search:pagedata.search});">{{page.pageno}}</a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
-
-    <md-content>
-        <md-card>
-            <md-card-content>
-                <h2 class="md-title">Paracosm</h2>
-                <p>
-                    The titles of Washed Out's breakthrough song and the first single from Paracosm share the two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
-                </p>
-            </md-card-content>
-            <div class="md-actions" layout="row" layout-align="end center">
-                <md-button>Action 1</md-button>
-                <md-button>Action 2</md-button>
-            </div>
-        </md-card>
-    </md-content>
-</section>
+</div>

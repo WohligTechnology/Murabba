@@ -21,13 +21,37 @@ firstapp.config(['$routeProvider',
             templateUrl: 'views/template.html',
             controller: 'about'
         }).
+        when('/createabout', {
+            templateUrl: 'views/template.html',
+            controller: 'createabout'
+        }).
+        when('/editabout/:id', {
+            templateUrl: 'views/template.html',
+            controller: 'editabout'
+        }).
         when('/client', {
             templateUrl: 'views/template.html',
             controller: 'client'
         }).
+        when('/createclient', {
+            templateUrl: 'views/template.html',
+            controller: 'createclient'
+        }).
+        when('/editclient/:id', {
+            templateUrl: 'views/template.html',
+            controller: 'editclient'
+        }).
         when('/contactus', {
             templateUrl: 'views/template.html',
             controller: 'contactus'
+        }).
+        when('/createcontactus', {
+            templateUrl: 'views/template.html',
+            controller: 'createcontactus'
+        }).
+        when('/editcontactus/:id', {
+            templateUrl: 'views/template.html',
+            controller: 'editcontactus'
         }).
         when('/home', {
             templateUrl: 'views/template.html',
@@ -53,3 +77,11 @@ firstapp.config(['$routeProvider',
             redirectTo: '/login'
         });
   }]);
+firstapp.filter('uploadpath', function () {
+    return function (input) {
+        if (input && input != "")
+            return adminurl + "home/getimage?file=" + input;
+        else
+            return "";
+    };
+});
