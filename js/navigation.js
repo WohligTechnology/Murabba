@@ -232,6 +232,276 @@ var navigationservice = angular.module('navigationservice', [])
                     "_id": id
                 }
             }).success(callback);
+        },
+        createHome: function (data, callback) {
+            $http({
+                url: adminurl + "home/save",
+                method: "POST",
+                data: {
+                    "menu": data.menu,
+                    "image": data.image
+                }
+            }).success(callback);
+        },
+        editHome: function (data, callback) {
+            $http({
+                url: adminurl + "home/save",
+                method: "POST",
+                data: {
+                    "_id": data._id,
+                    "menu": data.menu,
+                    "image": data.image
+                }
+            }).success(callback);
+        },
+        deleteHome: function (callback) {
+            $http({
+                url: adminurl + "home/delete",
+                method: "POST",
+                data: {
+                    "_id": $.jStorage.get("deletehome")
+                }
+            }).success(callback);
+        },
+        getlimitedHome: function (data, callback) {
+            $http({
+                url: adminurl + "home/findlimited",
+                method: "POST",
+                data: {
+                    "search": data.search,
+                    "pagesize": parseInt(data.limit),
+                    "pagenumber": parseInt(data.page)
+                }
+            }).success(callback);
+        },
+        getOneHome: function (id, callback) {
+            $http({
+                url: adminurl + "home/findone",
+                method: "POST",
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        createPortfolio: function (data, callback) {
+            $http({
+                url: adminurl + "portfolio/save",
+                method: "POST",
+                data: {
+                    "menu": data.menu,
+                    "image": data.image,
+                    "name": data.name,
+                    "description": data.description,
+                    "tech": data.tech
+                }
+            }).success(callback);
+        },
+        editPortfolio: function (data, callback) {
+            $http({
+                url: adminurl + "portfolio/save",
+                method: "POST",
+                data: {
+                    "_id": data._id,
+                    "menu": data.menu,
+                    "image": data.image,
+                    "name": data.name,
+                    "description": data.description,
+                    "tech": data.tech
+                }
+            }).success(callback);
+        },
+        deletePortfolio: function (callback) {
+            $http({
+                url: adminurl + "portfolio/delete",
+                method: "POST",
+                data: {
+                    "_id": $.jStorage.get("deleteportfolio")
+                }
+            }).success(callback);
+        },
+        getlimitedPortfolio: function (data, callback) {
+            $http({
+                url: adminurl + "portfolio/findlimited",
+                method: "POST",
+                data: {
+                    "search": data.search,
+                    "pagesize": parseInt(data.limit),
+                    "pagenumber": parseInt(data.page)
+                }
+            }).success(callback);
+        },
+        getOnePortfolio: function (id, callback) {
+            $http({
+                url: adminurl + "portfolio/findone",
+                method: "POST",
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        createProduct: function (data, callback) {
+            $http({
+                url: adminurl + "product/save",
+                method: "POST",
+                data: {
+                    "menu": data.menu,
+                    "description": data.description
+                }
+            }).success(callback);
+        },
+        editProduct: function (data, callback) {
+            $http({
+                url: adminurl + "product/save",
+                method: "POST",
+                data: {
+                    "_id": data._id,
+                    "menu": data.menu,
+                    "description": data.description
+                }
+            }).success(callback);
+        },
+        deleteProduct: function (callback) {
+            $http({
+                url: adminurl + "product/delete",
+                method: "POST",
+                data: {
+                    "_id": $.jStorage.get("deleteproduct")
+                }
+            }).success(callback);
+        },
+        getlimitedProduct: function (data, callback) {
+            $http({
+                url: adminurl + "product/findlimited",
+                method: "POST",
+                data: {
+                    "search": data.search,
+                    "pagesize": parseInt(data.limit),
+                    "pagenumber": parseInt(data.page)
+                }
+            }).success(callback);
+        },
+        getOneProduct: function (id, callback) {
+            $http({
+                url: adminurl + "product/findone",
+                method: "POST",
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        createTeam: function (data, callback) {
+            $http({
+                url: adminurl + "team/save",
+                method: "POST",
+                data: {
+                    "name": data.name,
+                    "designation": data.designation,
+                    "movie": data.movie,
+                    "quote": data.quote,
+                    "description": data.description,
+                    "oneword": data.oneword,
+                    "phone": data.phone,
+                    "email": data.email,
+                    "image": data.image
+                }
+            }).success(callback);
+        },
+        editTeam: function (data, callback) {
+            $http({
+                url: adminurl + "team/save",
+                method: "POST",
+                data: {
+                    "_id": data._id,
+                    "name": data.name,
+                    "designation": data.designation,
+                    "movie": data.movie,
+                    "quote": data.quote,
+                    "description": data.description,
+                    "oneword": data.oneword,
+                    "phone": data.phone,
+                    "email": data.email,
+                    "image": data.image
+                }
+            }).success(callback);
+        },
+        deleteTeam: function (callback) {
+            $http({
+                url: adminurl + "team/delete",
+                method: "POST",
+                data: {
+                    "_id": $.jStorage.get("deleteteam")
+                }
+            }).success(callback);
+        },
+        getlimitedTeam: function (data, callback) {
+            $http({
+                url: adminurl + "team/findlimited",
+                method: "POST",
+                data: {
+                    "search": data.search,
+                    "pagesize": parseInt(data.limit),
+                    "pagenumber": parseInt(data.page)
+                }
+            }).success(callback);
+        },
+        getOneTeam: function (id, callback) {
+            $http({
+                url: adminurl + "team/findone",
+                method: "POST",
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        createTestimonial: function (data, callback) {
+            $http({
+                url: adminurl + "testimonial/save",
+                method: "POST",
+                data: {
+                    "name": data.name,
+                    "message": data.message
+                }
+            }).success(callback);
+        },
+        editTestimonial: function (data, callback) {
+            $http({
+                url: adminurl + "testimonial/save",
+                method: "POST",
+                data: {
+                    "_id": data._id,
+                    "name": data.name,
+                    "message": data.message
+                }
+            }).success(callback);
+        },
+        deleteTestimonial: function (callback) {
+            $http({
+                url: adminurl + "testimonial/delete",
+                method: "POST",
+                data: {
+                    "_id": $.jStorage.get("deleteTestimonial")
+                }
+            }).success(callback);
+        },
+        getlimitedTestimonial: function (data, callback) {
+            $http({
+                url: adminurl + "testimonial/findlimited",
+                method: "POST",
+                data: {
+                    "search": data.search,
+                    "pagesize": parseInt(data.limit),
+                    "pagenumber": parseInt(data.page)
+                }
+            }).success(callback);
+        },
+        getOneTestimonial: function (id, callback) {
+            $http({
+                url: adminurl + "testimonial/findone",
+                method: "POST",
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
         }
     }
 });

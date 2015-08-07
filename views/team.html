@@ -1,0 +1,69 @@
+<div class="user">
+    <div class="panel panel-default" style="border-radius:0px;">
+        <div class="panel-heading panel-hdr">
+            <i class="fa fa-th"></i> Show Team
+        </div>
+        <div class="col-md-4">
+            <md-input-container flex>
+                <label>Search</label>
+                <input name="search" ng-model="pagedata.search" ng-change="reload(pagedata);">
+            </md-input-container>
+        </div>
+        <div class="col-md-4 incenter">
+            <a href="#/createteam">
+                <md-button class="md-raised md-primary">Create Team</md-button>
+            </a>
+        </div>
+        <div class="col-md-1 on-right">
+            <md-select ng-model="pagedata.limit" placeholder="Page Limit" flex ng-change="reload(pagedata);">
+                <md-optgroup label="Page Limit">
+                    <md-option ng-value="10">10</md-option>
+                    <md-option ng-value="15">15</md-option>
+                    <md-option ng-value="20">20</md-option>
+                </md-optgroup>
+            </md-select>
+        </div>
+
+        <div class="panel-body">
+            <div class="user-table">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Menu</th>
+                            <th class="text-center">Favourite Designation</th>
+                            <th colspan="2" class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="value in team">
+                            <td class="text-center">{{value.name}} </td>
+                            <td class="text-center">{{value.designation}} </td>
+                            <td class="text-center btn-edit">
+                                <div class="btn-group">
+                                    <button class="btn btn-xs btn-default" type="button" ng-click="deletefun(value._id)"><i class="fa fa-times"></i>
+                                        <md-tooltip>
+                                            Delete
+                                        </md-tooltip>
+                                    </button>
+                                    <a href="#/editteam/{{value._id}}">
+                                        <button class="btn btn-xs btn-default" type="button"><i class="fa fa-pencil"></i>
+                                            <md-tooltip>
+                                                Edit
+                                            </md-tooltip>
+                                        </button>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <nav>
+                    <ul class="pagination">
+                        <li ng-class="page.class" ng-repeat="page in pages"><a ng-click="reload({page:page.pageno,limit:pagedata.limit,search:pagedata.search});">{{page.pageno}}</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
